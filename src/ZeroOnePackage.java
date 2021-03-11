@@ -49,6 +49,7 @@ public class ZeroOnePackage {
         for (int i = 1; i <= N; i++) {
             /**
              * V的循环顺序要注意，最后的一个V是较小的V推出来的
+             * (这样可以保证)每个物品只放一次
              */
             for (int j = V; j > 0; j--) {
                 if (j < list[i][0]) {

@@ -25,7 +25,7 @@ public class CompletePackage {
         for (int i = 1; i <= N; i++) {
             /**
              * 完全背包问题和01背包问题在代码上核心的区别就是在V的循环顺序上面
-             * 从0开始到V可以
+             * 从0开始到V可以使得每个背包的值无限放
              */
             for (int j = 0; j <= V; j++) {
                 if (j < list[i][0]) {

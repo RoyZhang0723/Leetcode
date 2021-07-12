@@ -1,4 +1,8 @@
 public class quickSort {
+    /**
+     * 还是有问题的
+     * @param args
+     */
     public static void main(String[] args) {
         int a[];
         a = new int[]{5, 9, 6, 55, 87, 23, 99, 62, 74, 52};

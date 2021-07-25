@@ -2,6 +2,7 @@ import java.util.*;
 
 /**
  * 克隆图
+ * https://www.lintcode.com/problem/137
  */
 public class CloneGraph {
     class UndirectedGraphNode {

@@ -5,6 +5,7 @@ import java.util.Queue;
  * 岛屿的个数（字节跳动面试真题）
  * https://www.lintcode.com/problem/433
  * 基本思想还是采用bfs来做
+ *
  */
 public class NumIslands {
     class Coordinate {

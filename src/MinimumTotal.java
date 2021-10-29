@@ -6,7 +6,41 @@
  *
  */
 public class MinimumTotal {
+
+    /**
+     * dp的基本写法
+     * @param triangle
+     * @return
+     */
     public static int minimumTotal(int[][] triangle) {
+        // write your code here
+        int n = triangle.length;
+        int[][] dp = new int[n][n];
+        dp[0][0] = triangle[0][0];
+        int i, j;
+        int ans;
+        for (i = 1; i < n; i++) {
+            dp[i][0] = dp[i - 1][0] + triangle[i][0];
+            dp[i][i] = dp[i - 1][i - 1] + triangle[i][i];
+            for (j = 1; j < i; j++) {
+                dp[i][j] = Math.min(dp[i - 1][j - 1], dp[i - 1][j]) + triangle[i][j];
+            }
+        }
+        ans = dp[n - 1][0];
+        for (j = 1; j < n; j++) {
+            if (ans > dp[n - 1][j]) {
+                ans = dp[n - 1][j];
+            }
+        }
+        return ans;
+    }
+
+    /**
+     * 空间复杂度上面进行了优化，因为每次在更新的时候只需要两行的数据，故之前的数据实际上没有记住的必要的
+     * @param triangle
+     * @return
+     */
+    public static int minimumTotal1(int[][] triangle) {
         if (triangle == null || triangle.length == 0 || triangle[0] == null || triangle[0].length == 0) {
             return -1;
         }

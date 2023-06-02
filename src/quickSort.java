@@ -16,7 +16,7 @@ public class quickSort {
         if (hi <= lo) {
             return;
         } else if (hi - lo == 1) {
-
+            return;
         } else {
             int middle;
             middle = partition(a, lo, hi);

@@ -26,7 +26,7 @@ public class ReverseLinkedList {
 //            head = head.next;
 //        }
 //        ListNode resverseList = reverseLinkedList2(head, head, null);
-        ListNode resverseList = reverseLinkedList2(head,null);
+        ListNode resverseList = reverseLinkedList2(head);
         while (resverseList != null){
             System.out.println(resverseList.val);
             resverseList = resverseList.next;
@@ -73,14 +73,15 @@ public class ReverseLinkedList {
      * @param head
      * @return
      */
-    public static ListNode reverseLinkedList2(ListNode head, ListNode prev) {
-        if (head == null) {
-            return prev;
-        } else {
-            ListNode nextNode = head.next;
-            head.next = prev;
-            prev = head;
-            return reverseLinkedList2(nextNode, prev);
+    // 定义：输入一个单链表头结点，将该链表反转，返回新的头结点
+    // 特别像以前物理学到的整体法牛二律，运用递归思想很多时候就是得把剩余部分看作整体来解
+    public static ListNode reverseLinkedList2(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
         }
+        ListNode last = reverseLinkedList2(head.next);
+        head.next.next = head;
+        head.next = null;
+        return last;
     }
 }

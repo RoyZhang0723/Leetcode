@@ -1,7 +1,8 @@
-import sun.misc.Queue;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 
 public class PruneTree {
     /**
@@ -37,13 +38,13 @@ public class PruneTree {
      * @throws InterruptedException
      */
     public static BinaryTreeNode pruneTree(BinaryTreeNode root) throws InterruptedException {
-        Queue<BinaryTreeNode> binaryTreeNodeQueue = new Queue<>();
+        Queue<BinaryTreeNode> binaryTreeNopoll = new LinkedList<>();
         BinaryTreeNode outNode;
         BinaryTreeNode par;
-        binaryTreeNodeQueue.enqueue(root);
+        binaryTreeNopoll.offer(root);
         dfs(root, null);
-        while (!binaryTreeNodeQueue.isEmpty()) {
-            outNode = binaryTreeNodeQueue.dequeue();
+        while (!binaryTreeNopoll.isEmpty()) {
+            outNode = binaryTreeNopoll.poll();
             if (isNoneOneTree(outNode)) {
                 par = parent.get(outNode);
                 if (par.leftNode==outNode) {
@@ -55,12 +56,12 @@ public class PruneTree {
                 if (outNode.leftNode == null && outNode.rightNode == null) {
 
                 } else if (outNode.leftNode == null) {
-                    binaryTreeNodeQueue.enqueue(outNode.rightNode);
+                    binaryTreeNopoll.offer(outNode.rightNode);
                 } else if (outNode.rightNode == null) {
-                    binaryTreeNodeQueue.enqueue(outNode.leftNode);
+                    binaryTreeNopoll.offer(outNode.leftNode);
                 } else {
-                    binaryTreeNodeQueue.enqueue(outNode.leftNode);
-                    binaryTreeNodeQueue.enqueue(outNode.rightNode);
+                    binaryTreeNopoll.offer(outNode.leftNode);
+                    binaryTreeNopoll.offer(outNode.rightNode);
                 }
             }
         }

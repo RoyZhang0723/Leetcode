@@ -1,7 +1,8 @@
-import sun.misc.Queue;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class TreeTraverse {
-    static Queue<BinaryTreeNode> binaryTreeNodeQueue = new Queue<>();
+    static Queue<BinaryTreeNode> binaryTreeNodeQueue = new LinkedList<>();
 
     public static void main(String[] args) throws InterruptedException {
         /**
@@ -38,20 +39,20 @@ public class TreeTraverse {
     public static void levelOrderTraverse(BinaryTreeNode binaryTreeNode) throws InterruptedException {
         BinaryTreeNode outNode;
         if (binaryTreeNode != null) {
-            binaryTreeNodeQueue.enqueue(binaryTreeNode);
+            binaryTreeNodeQueue.offer(binaryTreeNode);
         }
         while (!binaryTreeNodeQueue.isEmpty()) {
-            outNode = binaryTreeNodeQueue.dequeue();
+            outNode = binaryTreeNodeQueue.poll();
             System.out.println(outNode.value);
             if (outNode.leftNode == null && outNode.rightNode == null) {
 
             } else if (outNode.leftNode == null) {
-                binaryTreeNodeQueue.enqueue(outNode.rightNode);
+                binaryTreeNodeQueue.offer(outNode.rightNode);
             } else if (outNode.rightNode == null) {
-                binaryTreeNodeQueue.enqueue(outNode.leftNode);
+                binaryTreeNodeQueue.offer(outNode.leftNode);
             } else {
-                binaryTreeNodeQueue.enqueue(outNode.leftNode);
-                binaryTreeNodeQueue.enqueue(outNode.rightNode);
+                binaryTreeNodeQueue.offer(outNode.leftNode);
+                binaryTreeNodeQueue.offer(outNode.rightNode);
             }
         }
     }
